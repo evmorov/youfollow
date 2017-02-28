@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import Octokat from 'octokat';
 import Header from './components/Header';
+import FollowingList from './components/FollowingList';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      following: []
+      following: [],
+      selectedFollowing: null
     };
-    this.followingSearch('');
+    this.followingSearch();
   }
 
-  followingSearch(name) {
+  followingSearch() {
     const octo = new Octokat({
       username: 'evmorov',
       password: 'password'
@@ -24,9 +26,8 @@ class App extends Component {
     });
 
     octo.user.following.fetch((err, users) => {
-      console.log("Users you're following:");
-      users.items.forEach((user) => {
-        console.log(`${user.login} ${user.htmlUrl}`);
+      this.setState({
+        followings: users.items
       });
     });
   }
@@ -35,9 +36,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <p>
-          YouFollow content
-        </p>
+        <FollowingList
+          followings={this.state.followings}
+          />
       </div>
     );
   }
