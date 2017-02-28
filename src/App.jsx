@@ -11,15 +11,32 @@ class App extends Component {
 
     this.state = {
       following: [],
-      selectedFollowing: null
+      selectedFollowing: null,
+      token: null
     };
-    this.followingSearch();
+
+    this.findToken();
   }
 
-  followingSearch() {
+  findToken() {
+    const codeRegex = window.location.href.match(/\?code=(.*)/);
+    if (!codeRegex) return;
+
+    const code = codeRegex[1];
+    fetch(`https://youfollow.herokuapp.com/authenticate/${code}`)
+      .then((response) => {
+        return response.json();
+      }).then((json) => {
+        const token = json.token
+        if (token) this.followingSearch(token)
+      }).catch((ex) => {
+        console.log('parsing failed', ex);
+      });
+  }
+
+  followingSearch(token) {
     const octo = new Octokat({
-      username: 'evmorov',
-      password: 'password'
+      token: token
     });
 
     octo.rateLimit.fetch((err, limit) => {
@@ -29,6 +46,7 @@ class App extends Component {
 
     octo.user.following.fetch((err, users) => {
       this.setState({
+        token: token,
         followings: users.items,
         selectedFollowing: users.items[0]
       });
@@ -43,7 +61,7 @@ class App extends Component {
         <FollowingList
           onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }
           followings={this.state.followings}
-          />
+        />
         <FollowingDetail following={this.state.selectedFollowing} />
       </div>
     );
