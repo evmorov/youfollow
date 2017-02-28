@@ -15,10 +15,11 @@ class App extends Component {
       token: null
     };
 
-    this.findToken();
+    const token = localStorage.getItem('token');
+    token ? (this.getData(token)) : (this.getTokenAndData());
   }
 
-  findToken() {
+  getTokenAndData() {
     const codeRegex = window.location.href.match(/\?code=(.*)/);
     if (!codeRegex) return;
 
@@ -28,13 +29,16 @@ class App extends Component {
         return response.json();
       }).then((json) => {
         const token = json.token
-        if (token) this.followingSearch(token)
+        if (token) {
+          localStorage.setItem('token', token);
+          this.getData(token)
+        }
       }).catch((ex) => {
         console.log('parsing failed', ex);
       });
   }
 
-  followingSearch(token) {
+  getData(token) {
     const octo = new Octokat({
       token: token
     });
@@ -46,7 +50,6 @@ class App extends Component {
 
     octo.user.following.fetch((err, users) => {
       this.setState({
-        token: token,
         followings: users.items,
         selectedFollowing: users.items[0]
       });
