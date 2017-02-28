@@ -1,12 +1,11 @@
 import React from 'react';
 
-const FollowingListItem = ({following}) => {
+const FollowingListItem = ({following, onFollowingSelect}) => {
   return (
-    <li className="list-group-item">
+    <li onClick={() => onFollowingSelect(following)} className="list-group-item">
       <div className="following-list">
-        <a href={following.htmlUrl}>{following.login}
-          <img className="img-responsive" src={following.avatarUrl} alt={following.login} />
-        </a>
+        <div>{following.login}</div>
+        <img className="img-responsive" src={following.avatarUrl} alt={following.login} />
       </div>
     </li>
   );

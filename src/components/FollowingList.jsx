@@ -9,15 +9,18 @@ const FollowingList = (props) => {
   const followingListItems = props.followings.map((following) => {
     return (
       <FollowingListItem
+        onFollowingSelect={props.onFollowingSelect}
         key={following.id}
         following={following} />
     );
   });
 
   return (
-    <ul className="list-group">
-      {followingListItems}
-    </ul>
+    <div className="col-md-2">
+      <ul className="list-group">
+        {followingListItems}
+      </ul>
+    </div>
   );
 };
 

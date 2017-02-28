@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Octokat from 'octokat';
 import Header from './components/Header';
+import Login from './components/Login';
 import FollowingList from './components/FollowingList';
+import FollowingDetail from './components/FollowingDetail';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +29,8 @@ class App extends Component {
 
     octo.user.following.fetch((err, users) => {
       this.setState({
-        followings: users.items
+        followings: users.items,
+        selectedFollowing: users.items[0]
       });
     });
   }
@@ -36,9 +39,12 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <Login />
         <FollowingList
+          onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }
           followings={this.state.followings}
           />
+        <FollowingDetail following={this.state.selectedFollowing} />
       </div>
     );
   }
