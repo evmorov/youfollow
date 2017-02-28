@@ -11,8 +11,7 @@ class App extends Component {
 
     this.state = {
       following: [],
-      selectedFollowing: null,
-      token: null
+      selectedFollowing: null
     };
 
     const token = localStorage.getItem('token');
@@ -39,13 +38,10 @@ class App extends Component {
   }
 
   getData(token) {
-    const octo = new Octokat({
-      token: token
-    });
+    const octo = new Octokat({ token: token });
 
     octo.rateLimit.fetch((err, limit) => {
-      console.log(`Rate limit: ${limit.rate.limit}`);
-      console.log(`Rate remaining: ${limit.rate.remaining}`);
+      console.log(`Requests to GitHub remaining: ${limit.rate.remaining} / ${limit.rate.limit}`);
     });
 
     octo.user.following.fetch((err, users) => {
