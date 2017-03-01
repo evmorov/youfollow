@@ -14,7 +14,6 @@ const Header = ({ me, clearAppState, isSignedIn }) => {
     authLinks = <HeaderGuest />;
   }
 
-
   return (
     <Navbar>
       <Grid>
