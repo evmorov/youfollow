@@ -44,10 +44,6 @@ class App extends Component {
   getData(token) {
     const octo = new Octokat({ token });
 
-    octo.rateLimit.fetch((err, limit) => {
-      console.log(`Requests to GitHub remaining: ${limit.rate.remaining} / ${limit.rate.limit}`);
-    });
-
     octo.user.following.fetch((err, users) => {
       this.setState({
         octo: octo,
@@ -89,6 +85,12 @@ class App extends Component {
         <Footer />
       </div>
     );
+  }
+
+  componentDidUpdate() {
+    this.state.octo.rateLimit.fetch((err, limit) => {
+      console.log(`Requests to GitHub remaining: ${limit.rate.remaining} / ${limit.rate.limit}`);
+    });
   }
 }
 
