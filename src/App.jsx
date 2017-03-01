@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       following: [],
-      selectedFollowing: null
+      selectedFollowing: null,
+      me: null
     };
 
     const token = localStorage.getItem('token');
@@ -50,6 +51,8 @@ class App extends Component {
         selectedFollowing: users.items[0]
       });
     });
+
+    octo.user.fetch((err, me) => this.setState({ me: me }) );
   }
 
   clearAppState() {
@@ -57,13 +60,16 @@ class App extends Component {
     this.setState({
       followings: null,
       selectedFollowing: null,
+      me: null
     });
   }
 
   render() {
     return (
       <div>
-        <Header clearAppState={this.clearAppState} />
+        <Header
+          me={this.state.me}
+          clearAppState={this.clearAppState} />
         <Login />
         <FollowingList
           onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }
