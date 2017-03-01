@@ -3,6 +3,7 @@ import Octokat from 'octokat';
 import Header from './components/Header';
 import FollowingList from './components/FollowingList';
 import FollowingDetail from './components/FollowingDetail';
+import { Grid } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -70,14 +71,16 @@ class App extends Component {
         <Header
           me={this.state.me}
           clearAppState={this.clearAppState} />
-        <FollowingList
-          followings={this.state.followings}
-          onFollowingSelect={(selectedFollowing, activeIndex) => {
-            this.setState({selectedFollowing, activeIndex})
-          }}
-          activeIndex={this.state.activeIndex}
-        />
-        <FollowingDetail following={this.state.selectedFollowing} />
+        <Grid>
+          <FollowingList
+            followings={this.state.followings}
+            onFollowingSelect={(selectedFollowing, activeIndex) => {
+              this.setState({selectedFollowing, activeIndex})
+            }}
+            activeIndex={this.state.activeIndex}
+          />
+          <FollowingDetail following={this.state.selectedFollowing} />
+        </Grid>
       </div>
     );
   }
