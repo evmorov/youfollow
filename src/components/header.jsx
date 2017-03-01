@@ -13,7 +13,11 @@ class Header extends Component {
     } else {
       authLinks =
         <Nav pullRight>
-          <NavItem eventKey={0}>Not signed in</NavItem>
+          <NavItem
+            eventKey={0}
+            href="https://github.com/login/oauth/authorize?client_id=c13f1ec202a0b58d4d02&redirect_uri=http://127.0.0.1:3000">
+            Sign in with Github
+          </NavItem>
         </Nav>;
     }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Octokat from 'octokat';
 import Header from './components/Header';
-import Login from './components/Login';
 import FollowingList from './components/FollowingList';
 import FollowingDetail from './components/FollowingDetail';
 
@@ -70,7 +69,6 @@ class App extends Component {
         <Header
           me={this.state.me}
           clearAppState={this.clearAppState} />
-        <Login />
         <FollowingList
           onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }
           followings={this.state.followings}
