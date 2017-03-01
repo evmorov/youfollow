@@ -18,7 +18,7 @@ const FollowingList = ({followings, onFollowingSelect, activeIndex}) => {
   });
 
   return (
-    <ListGroup className="following-list col-md-2">
+    <ListGroup id="following-list" className="col-md-2">
       {followingListItems}
     </ListGroup>
   );

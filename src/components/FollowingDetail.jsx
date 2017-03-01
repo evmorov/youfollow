@@ -6,7 +6,7 @@ const FollowingDetail = ({following, octo}) => {
   if (!following) return <Loading type='spinningBubbles' color='#636363' />;
 
   return (
-    <div className="following-detail col-md-10">
+    <div id="following-detail" className="col-md-10">
       <h1>{following.login}</h1>
       <img className="img-responsive" src={following.avatarUrl} alt={following.login} />
       <a href={following.htmlUrl}>GitHub link</a>

@@ -1,8 +1,12 @@
-.following-list img {
+#following-list {
+  box-shadow: none;
+}
+
+#following-list img {
   width: 60px;
 }
 
-.following-detail img {
+#following-detail img {
   width: 150px;
 }
 
