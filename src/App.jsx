@@ -12,7 +12,7 @@ class App extends Component {
     this.clearAppState = this.clearAppState.bind(this)
 
     this.state = {
-      following: [],
+      followings: [],
       selectedFollowing: null,
       activeIndex: 0,
       me: null
