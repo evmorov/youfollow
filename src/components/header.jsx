@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
-import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
+import HeaderUser from './HeaderUser';
+import HeaderGuest from './HeaderGuest';
+import { Grid, Navbar } from 'react-bootstrap';
 
 class Header extends Component {
   render() {
     let authLinks = null;
     if (this.props.me) {
-      authLinks =
-        <Nav pullRight>
-          <NavItem eventKey={0} href={this.props.me.htmlUrl}>{this.props.me.login}</NavItem>
-          <NavItem eventKey={1} onClick={this.props.clearAppState}>Sign out</NavItem>
-        </Nav>;
+      authLinks = <HeaderUser me={this.props.me} clearAppState={this.props.clearAppState} />
     } else {
-      authLinks =
-        <Nav pullRight>
-          <NavItem
-            eventKey={0}
-            href="https://github.com/login/oauth/authorize?client_id=c13f1ec202a0b58d4d02&redirect_uri=http://127.0.0.1:3000">
-            Sign in with Github
-          </NavItem>
-        </Nav>;
+      authLinks = <HeaderGuest />
     }
 
     return (
