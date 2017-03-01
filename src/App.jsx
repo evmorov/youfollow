@@ -102,7 +102,9 @@ class App extends Component {
       <div>
         <Header
           me={this.state.me}
-          clearAppState={this.clearAppState} />
+          clearAppState={this.clearAppState}
+          isSignedIn={this.state.isSignedIn}
+        />
         <Grid>
           {content}
         </Grid>
