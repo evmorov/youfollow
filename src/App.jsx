@@ -20,11 +20,10 @@ class App extends Component {
   }
 
   getTokenAndData() {
-    const codeRegex = window.location.href.match(/\?code=(.*)/);
-    if (!codeRegex) return;
+    const code = window.location.href.match(/\?code=(.*)/);
+    if (!code) return;
 
-    const code = codeRegex[1];
-    fetch(`https://youfollow.herokuapp.com/authenticate/${code}`)
+    fetch(`https://youfollow.herokuapp.com/authenticate/${code[1]}`)
       .then((response) => {
         return response.json();
       }).then((json) => {
