@@ -22,7 +22,7 @@ class Header extends Component {
     }
 
     return (
-      <Navbar inverse>
+      <Navbar>
         <Grid>
           <Navbar.Header>
             <Navbar.Brand>YouFollow</Navbar.Brand>
