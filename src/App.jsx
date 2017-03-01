@@ -8,6 +8,7 @@ import FollowingDetail from './components/FollowingDetail';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.clearAppState = this.clearAppState.bind(this)
 
     this.state = {
       following: [],
@@ -52,10 +53,18 @@ class App extends Component {
     });
   }
 
+  clearAppState() {
+    localStorage.clear();
+    this.setState({
+      followings: null,
+      selectedFollowing: null,
+    });
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header clearAppState={this.clearAppState} />
         <Login />
         <FollowingList
           onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }

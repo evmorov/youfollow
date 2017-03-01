@@ -1,9 +1,9 @@
-import React from 'react';
-import { Grid, Navbar } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 
-const Header = () => {
-  return (
-    <div>
+class Header extends Component {
+  render() {
+    return (
       <Navbar inverse>
         <Grid>
           <Navbar.Header>
@@ -12,10 +12,14 @@ const Header = () => {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
+          <Nav pullRight>
+            <NavItem eventKey={0} href="#">Username</NavItem>
+            <NavItem eventKey={1} onClick={this.props.clearAppState}>Sign out</NavItem>
+          </Nav>
         </Grid>
       </Navbar>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Header;
