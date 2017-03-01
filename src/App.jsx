@@ -110,8 +110,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    // this.setState({ isSignedIn: true });
-
     const octo = this.state.octo;
     if (!octo) return null;
 
