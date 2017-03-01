@@ -2,9 +2,7 @@ import React from 'react';
 import FollowingListItem from './FollowingListItem';
 
 const FollowingList = (props) => {
-  if (!props.followings) {
-    return <div>Loading...</div>;
-  }
+  if (!props.followings) return null;
 
   const followingListItems = props.followings.map((following) => {
     return (

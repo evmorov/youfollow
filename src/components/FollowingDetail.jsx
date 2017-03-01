@@ -1,9 +1,7 @@
 import React from 'react';
 
 const FollowingDetail = ({following}) => {
-  if (!following) {
-    return <div>Loading...</div>;
-  }
+  if (!following) return null;
 
   return (
     <div className="following-detail col-md-10">
