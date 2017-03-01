@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from 'react-loading';
 
 class UserDetail extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class UserDetail extends Component {
     const user = this.state.user;
     if (!user || user.id !== this.props.following.id) {
       this.getUser();
-      return null;
+      return <Loading type='spinningBubbles' color='#636363' />;
     }
 
     return (
