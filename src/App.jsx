@@ -11,20 +11,26 @@ class App extends Component {
     super(props);
     this.clearAppState = this.clearAppState.bind(this)
 
+    const token = localStorage.getItem('token');
+
     this.state = {
       octo: null,
       followings: [],
       selectedFollowing: null,
       activeIndex: 0,
-      me: null
+      me: null,
+      isSignedIn: (token || this.getCode())
     };
 
-    const token = localStorage.getItem('token');
     token ? (this.getData(token)) : (this.getTokenAndData());
   }
 
+  getCode() {
+    return window.location.href.match(/\?code=(.*)/);
+  }
+
   getTokenAndData() {
-    const code = window.location.href.match(/\?code=(.*)/);
+    const code = this.getCode();
     if (!code) return;
 
     fetch(`https://youfollow.herokuapp.com/authenticate/${code[1]}`)
@@ -58,19 +64,20 @@ class App extends Component {
   clearAppState() {
     localStorage.clear();
     this.setState({
-      followings: null,
+      octo: null,
+      followings: [],
       selectedFollowing: null,
-      me: null
+      activeIndex: 0,
+      me: null,
+      isSignedIn: false
     });
   }
 
   render() {
-    return (
-      <div>
-        <Header
-          me={this.state.me}
-          clearAppState={this.clearAppState} />
-        <Grid>
+    let content = null;
+    if (this.state.isSignedIn) {
+      content =
+        <div>
           <FollowingList
             followings={this.state.followings}
             onFollowingSelect={(selectedFollowing, activeIndex) => {
@@ -81,6 +88,21 @@ class App extends Component {
           <FollowingDetail
             octo={this.state.octo}
             following={this.state.selectedFollowing} />
+        </div>;
+    } else {
+      content =
+        <p>
+          You need to sign in.
+        </p>
+    }
+
+    return (
+      <div>
+        <Header
+          me={this.state.me}
+          clearAppState={this.clearAppState} />
+        <Grid>
+          {content}
         </Grid>
         <Footer />
       </div>
@@ -88,6 +110,8 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    // this.setState({ isSignedIn: true });
+
     const octo = this.state.octo;
     if (!octo) return null;
 

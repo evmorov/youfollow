@@ -1,8 +1,9 @@
 import React from 'react';
+import Loading from 'react-loading';
 import UserDetail from './UserDetail';
 
 const FollowingDetail = ({following, octo}) => {
-  if (!following) return null;
+  if (!following) return <Loading type='spinningBubbles' color='#636363' />;
 
   return (
     <div className="following-detail col-md-10">

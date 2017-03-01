@@ -1,9 +1,10 @@
 import React from 'react';
-import FollowingListItem from './FollowingListItem';
+import Loading from 'react-loading';
 import { ListGroup } from 'react-bootstrap';
+import FollowingListItem from './FollowingListItem';
 
 const FollowingList = ({followings, onFollowingSelect, activeIndex}) => {
-  if (!followings) return null;
+  if (!followings) return <Loading type='spinningBubbles' color='#636363' />;
 
   const followingListItems = followings.map((following, index) => {
     return (

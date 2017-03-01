@@ -5,7 +5,7 @@ const HeaderUser = ({me, clearAppState}) => {
   return (
     <Nav pullRight>
       <NavItem eventKey={0} href={me.htmlUrl}>{me.login}</NavItem>
-      <NavItem eventKey={1} onClick={clearAppState}>Sign out</NavItem>
+      <NavItem eventKey={1} href='/' onClick={clearAppState}>Sign out</NavItem>
     </Nav>
   );
 }
