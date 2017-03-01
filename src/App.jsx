@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       following: [],
       selectedFollowing: null,
+      activeIndex: 0,
       me: null
     };
 
@@ -38,7 +39,7 @@ class App extends Component {
   }
 
   getData(token) {
-    const octo = new Octokat({ token: token });
+    const octo = new Octokat({ token });
 
     octo.rateLimit.fetch((err, limit) => {
       console.log(`Requests to GitHub remaining: ${limit.rate.remaining} / ${limit.rate.limit}`);
@@ -51,7 +52,7 @@ class App extends Component {
       });
     });
 
-    octo.user.fetch((err, me) => this.setState({ me: me }) );
+    octo.user.fetch((err, me) => this.setState({ me }) );
   }
 
   clearAppState() {
@@ -70,8 +71,11 @@ class App extends Component {
           me={this.state.me}
           clearAppState={this.clearAppState} />
         <FollowingList
-          onFollowingSelect={selectedFollowing => this.setState({selectedFollowing}) }
           followings={this.state.followings}
+          onFollowingSelect={(selectedFollowing, activeIndex) => {
+            this.setState({selectedFollowing, activeIndex})
+          }}
+          activeIndex={this.state.activeIndex}
         />
         <FollowingDetail following={this.state.selectedFollowing} />
       </div>

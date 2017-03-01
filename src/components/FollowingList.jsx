@@ -1,24 +1,25 @@
 import React from 'react';
 import FollowingListItem from './FollowingListItem';
+import { ListGroup } from 'react-bootstrap';
 
-const FollowingList = (props) => {
-  if (!props.followings) return null;
+const FollowingList = ({followings, onFollowingSelect, activeIndex}) => {
+  if (!followings) return null;
 
-  const followingListItems = props.followings.map((following) => {
+  const followingListItems = followings.map((following, index) => {
     return (
       <FollowingListItem
-        onFollowingSelect={props.onFollowingSelect}
+        onFollowingSelect={onFollowingSelect}
         key={following.id}
-        following={following} />
+        following={following}
+        index={index}
+        activeIndex={activeIndex}/>
     );
   });
 
   return (
-    <div className="col-md-2">
-      <ul className="list-group">
-        {followingListItems}
-      </ul>
-    </div>
+    <ListGroup className="following-list col-md-2">
+      {followingListItems}
+    </ListGroup>
   );
 };
 
