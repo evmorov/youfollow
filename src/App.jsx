@@ -41,6 +41,8 @@ class App extends Component {
         if (token) {
           localStorage.setItem('token', token);
           this.getData(token)
+        } else {
+          console.log('ooops, something went wrong');
         }
       }).catch((ex) => {
         console.log('parsing failed', ex);
