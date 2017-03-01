@@ -7,9 +7,7 @@ class Header extends Component {
       <Navbar inverse>
         <Grid>
           <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">YouFollow</a>
-            </Navbar.Brand>
+            <Navbar.Brand>YouFollow</Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Nav pullRight>
