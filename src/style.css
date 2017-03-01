@@ -2,6 +2,10 @@
   width: 60px;
 }
 
+.following-detail img {
+  width: 150px;
+}
+
 .list-group-item {
   cursor: pointer;
 }

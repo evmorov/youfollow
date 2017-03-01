@@ -12,6 +12,7 @@ class App extends Component {
     this.clearAppState = this.clearAppState.bind(this)
 
     this.state = {
+      octo: null,
       followings: [],
       selectedFollowing: null,
       activeIndex: 0,
@@ -49,6 +50,7 @@ class App extends Component {
 
     octo.user.following.fetch((err, users) => {
       this.setState({
+        octo: octo,
         followings: users.items,
         selectedFollowing: users.items[0]
       });
@@ -80,7 +82,9 @@ class App extends Component {
             }}
             activeIndex={this.state.activeIndex}
           />
-          <FollowingDetail following={this.state.selectedFollowing} />
+          <FollowingDetail
+            octo={this.state.octo}
+            following={this.state.selectedFollowing} />
         </Grid>
         <Footer />
       </div>
