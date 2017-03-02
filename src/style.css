@@ -6,6 +6,10 @@
   width: 60px;
 }
 
+#repo-list .description  {
+  margin-bottom: 15px;
+}
+
 #user-detail img {
   width: 150px;
 }

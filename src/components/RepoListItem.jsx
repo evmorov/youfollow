@@ -6,8 +6,8 @@ const RepoListItem = ({ repo }) => {
   return (
     <ListGroupItem>
       <h4>{repo.name}</h4>
-      <div>{repo.description}</div>
-      <div>
+      <div className="description">{repo.description}</div>
+      <div className="small">
         <span>Forks: {repo.forksCount} | </span>
         <span>Stars: {repo.stargazersCount} | </span>
         <span>Watchers: {repo.watchersCount} | </span>
