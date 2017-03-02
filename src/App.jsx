@@ -34,7 +34,7 @@ class App extends Component {
     const code = this.getCode();
     if (!code) return;
 
-    fetch(`https://youfollow-github-local.herokuapp.com/authenticate/${code[1]}`)
+    fetch(`${process.env.REACT_APP_OAUTH_SERVER}/authenticate/${code[1]}`)
       .then((response) => {
         return response.json();
       }).then((json) => {
