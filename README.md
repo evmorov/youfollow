@@ -1,5 +1,7 @@
 # YouFollow
 
+View web app [here](https://youfollow.herokuapp.com).
+
 ## About
 
 YouFollow provides you information about the people you follow at GitHub. For unauthenticated requests, the rate limit allows you to make up to 60 requests per hour to GitHub API, so you need to sign in.
@@ -20,7 +22,12 @@ The project is in alpha.
 
 - [Redux](https://github.com/reactjs/redux)
 - [React Router](https://github.com/ReactTraining/react-router)
+- Animation
 - Tests :cry:
+
+### Deploy
+
+Deployed to Heroku using [Heroku Buildpack for create-react-app](https://github.com/mars/create-react-app-buildpack).
 
 ## How to start
 
