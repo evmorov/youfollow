@@ -110,15 +110,6 @@ class App extends Component {
       </div>
     );
   }
-
-  componentDidUpdate() {
-    const octo = this.state.octo;
-    if (!octo) return null;
-
-    this.state.octo.rateLimit.fetch((err, limit) => {
-      console.log(`Requests to GitHub remaining: ${limit.rate.remaining} / ${limit.rate.limit}`);
-    });
-  }
 }
 
 export default App;
