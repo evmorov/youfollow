@@ -25,5 +25,8 @@ The project is in alpha.
 ## How to start
 
 1. Clone
-2. `npm install`
-3. `npm start`
+2. Register a [GitHub application](https://github.com/settings/developers)
+3. Deploy [a server](https://github.com/prose/gatekeeper) for getting a token from GitHub
+4. Create `.env` file
+5. `npm install`
+6. `npm start`
