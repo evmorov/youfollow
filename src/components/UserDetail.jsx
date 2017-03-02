@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 
 class UserDetail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { user: null };
-  }
-
-  getUser() {
-    const octo = this.props.octo;
-    octo.users(this.props.following.login).fetch((err, user) => this.setState({ user }));
-  }
-
   render() {
-    const user = this.state.user;
-    if (!user || user.id !== this.props.following.id) {
-      this.getUser();
-      return <div>Loading...</div>;
-    }
+    const user = this.props.user;
+    if (!user) return <div>Loading...</div>;
 
     return (
-      <div>
-        <h2>{user.name}</h2>
+      <div id="user-detail">
+        <h2>{user.login}</h2>
+
+        { user.name ? <p className="text-muted lead">{user.name}</p> : '' }
+        <img className="img-responsive" src={user.avatarUrl} alt={user.login} />
+        <a href={user.htmlUrl}>GitHub link</a>
+
         <dl className="dl-horizontal">
           <dt>Location</dt>
           <dd>{this.orHyphen(user.location)}</dd>

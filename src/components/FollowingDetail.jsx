@@ -2,20 +2,48 @@ import React, { Component } from 'react';
 import UserDetail from './UserDetail';
 
 class FollowingDetail extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      following: null,
+      user: null,
+      repositories: []
+    };
+
+    this.setStateIfFollowingChanged(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setStateIfFollowingChanged(nextProps);
+  }
+
+  setStateIfFollowingChanged(props) {
+    const following = props.following;
+    if (!following) return null;
+
+    const octo = props.octo;
+    if (!this.state.following || (following.id !== this.state.following.id)) {
+      this.setState({
+        following: following,
+        user: null
+      });
+      this.getUser(following, octo);
+    }
+  }
+
+  getUser(following, octo) {
+    octo.users(following.login).fetch((err, user) => this.setState({ user }));
+  }
 
   render() {
-    const following = this.props.following;
-    if (!following) return <div>Loading...</div>;
-
     return (
       <div id="following-detail" className="col-md-10">
-        <h1>{following.login}</h1>
-        <img className="img-responsive" src={following.avatarUrl} alt={following.login} />
-        <a href={following.htmlUrl}>GitHub link</a>
-        <UserDetail octo={this.props.octo} following={following} />
+        <UserDetail user={this.state.user} />
       </div>
     );
   }
+
 }
 
 export default FollowingDetail;
