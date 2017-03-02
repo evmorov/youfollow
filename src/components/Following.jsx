@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserDetail from './UserDetail';
 import RepoList from './RepoList';
 
-class FollowingDetail extends Component {
+class Following extends Component {
   constructor(props) {
     super(props);
 
@@ -45,7 +45,7 @@ class FollowingDetail extends Component {
 
   render() {
     return (
-      <div id="following-detail" className="col-md-10">
+      <div className="col-md-10">
         <UserDetail user={this.state.user} />
         <RepoList repos={this.state.repos} />
       </div>
@@ -54,4 +54,4 @@ class FollowingDetail extends Component {
 
 }
 
-export default FollowingDetail;
+export default Following;
