@@ -11,9 +11,10 @@ const RepoListItem = ({ repo }) => {
         <span>Forks: {repo.forksCount} | </span>
         <span>Stars: {repo.stargazersCount} | </span>
         <span>Watchers: {repo.watchersCount} | </span>
-        <span>Updated: {Moment(repo.updatedAt).fromNow()}</span>
+        <span>Updated: {Moment(repo.pushedAt).fromNow()}</span>
       </div>
       <div><a href={repo.htmlUrl}>GitHub link</a></div>
+
     </ListGroupItem>
   );
 };

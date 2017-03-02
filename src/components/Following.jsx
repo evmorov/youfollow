@@ -40,7 +40,10 @@ class Following extends Component {
   }
 
   getRepos(following, octo) {
-    octo.users(following.login).repos.fetch((err, repos) => this.setState({ repos }));
+    const params = { sort: 'pushed' };
+    octo.fromUrl(`/users/${following.login}/repos`).fetch(params, (err, repos) => {
+      this.setState({ repos })
+    });
   }
 
   render() {
