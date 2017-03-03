@@ -35,9 +35,8 @@ class App extends Component {
     if (!code) return;
 
     fetch(`${process.env.REACT_APP_OAUTH_SERVER}/authenticate/${code[1]}`)
-      .then((response) => {
-        return response.json();
-      }).then((json) => {
+      .then(response => response.json())
+      .then((json) => {
         const token = json.token
         if (token) {
           localStorage.setItem('token', token);
@@ -45,9 +44,8 @@ class App extends Component {
         } else {
           console.log('ooops, something went wrong');
         }
-      }).catch((ex) => {
-        console.log('parsing failed', ex);
-      });
+      })
+      .catch(ex => console.log('parsing failed', ex));
   }
 
   getData(token) {
@@ -61,7 +59,7 @@ class App extends Component {
       });
     });
 
-    octo.user.fetch((err, me) => this.setState({ me }) );
+    octo.user.fetch((err, me) => this.setState({ me }));
   }
 
   clearAppState() {
