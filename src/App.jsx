@@ -37,15 +37,15 @@ class App extends Component {
     fetch(`${process.env.REACT_APP_OAUTH_SERVER}/authenticate/${code[1]}`)
       .then(response => response.json())
       .then((json) => {
-        const token = json.token
+        const token = json.token;
         if (token) {
           localStorage.setItem('token', token);
-          this.getData(token)
+          this.getData(token);
         } else {
-          console.log('ooops, something went wrong');
+          console.log(`there is no token in the json response ${json}`);
         }
       })
-      .catch(ex => console.log(`failed to change the code ${code[1]} for token`, ex));
+      .catch(ex => console.log(`failed to change the code ${code[1]} for token. Exception ${ex}`));
   }
 
   getData(token) {
