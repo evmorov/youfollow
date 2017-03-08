@@ -9,7 +9,7 @@ const Footer = () => {
           <a href="https://github.com/evmorov/youfollow">Source</a>
         </Col>
         <Col md={6}>
-          <a href="https://github.com/settings/applications">Revoke access</a>
+          <a href={`https://github.com/settings/connections/applications/${process.env.REACT_APP_OAUTH_CLIENT_ID}`}>Revoke access</a>
         </Col>
       </Row>
     </Grid>
