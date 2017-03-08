@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
 
 class UserDetail extends Component {
   render() {
@@ -14,6 +15,9 @@ class UserDetail extends Component {
         <a href={user.htmlUrl}>GitHub link</a>
 
         <dl className="dl-horizontal">
+          <dt>Registred</dt>
+          <dd>{Moment(user.createdAt).fromNow()}</dd>
+
           <dt>Location</dt>
           <dd>{this.orHyphen(user.location)}</dd>
 
