@@ -2,13 +2,11 @@
 
 View web app [here](https://youfollow.herokuapp.com).
 
-## About
-
 YouFollow provides you information about the people you follow at GitHub. For unauthenticated requests, the rate limit allows you to make up to 60 requests per hour to GitHub API, so you need to sign in.
 
 The project is in alpha.
 
-### What's inside
+## What's inside
 
 - [React](https://github.com/facebook/react)
 - [Create React App](https://github.com/facebookincubator/create-react-app) for avoiding boilerplate
@@ -18,16 +16,20 @@ The project is in alpha.
 
   > GitHub's OAuth implementation supports the standard authorization code grant type. The implicit grant type is not supported.
 
-### What's not here
+## What's not here
 
 - [Redux](https://github.com/reactjs/redux)
 - [React Router](https://github.com/ReactTraining/react-router)
 - Animation
 - Tests :cry:
 
-### Deploy
+## Deploy
 
 Deployed to Heroku using [Heroku Buildpack for create-react-app](https://github.com/mars/create-react-app-buildpack).
+
+## Limitations
+
+- Currently only the first 30 repositories are shown. Need to add a pagination.
 
 ## How to start
 
