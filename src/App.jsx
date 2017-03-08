@@ -42,19 +42,20 @@ class App extends Component {
           localStorage.setItem('token', token);
           this.getData(token);
         } else {
-          console.log(`there is no token in the json response ${json}`);
+          console.log(`There is no token in the json response. Error: '${json.error}'`);
         }
       })
-      .catch(ex => console.log(`failed to change the code ${code[1]} for token. Exception ${ex}`));
+      .catch(ex => console.log(`Failed to change the code ${code[1]}. Exception '${ex}'`));
   }
 
   getData(token) {
     const octo = new Octokat({ token });
 
     octo.user.following.fetch((err, users) => {
-      if (err) {
+      if (err && err.message.includes('Bad credentials')) {
         console.log(err.message);
         this.clearAppState();
+        return;
       }
 
       this.setState({
@@ -68,6 +69,7 @@ class App extends Component {
   }
 
   clearAppState() {
+    history.pushState({}, null, '/');
     localStorage.clear();
     this.setState({
       octo: null,
