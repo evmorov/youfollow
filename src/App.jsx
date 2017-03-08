@@ -45,7 +45,7 @@ class App extends Component {
           console.log('ooops, something went wrong');
         }
       })
-      .catch(ex => console.log('parsing failed', ex));
+      .catch(ex => console.log(`failed to change the code ${code[1]} for token`, ex));
   }
 
   getData(token) {
