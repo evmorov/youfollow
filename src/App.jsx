@@ -52,6 +52,11 @@ class App extends Component {
     const octo = new Octokat({ token });
 
     octo.user.following.fetch((err, users) => {
+      if (err) {
+        console.log(err.message);
+        this.clearAppState();
+      }
+
       this.setState({
         octo: octo,
         followings: users.items,
