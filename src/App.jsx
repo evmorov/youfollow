@@ -6,6 +6,7 @@ import Following from './components/Following';
 import BodyNotLoggedIn from './components/BodyNotLoggedIn';
 import Footer from './components/Footer';
 import { Grid } from 'react-bootstrap';
+import HttpsRedirect from 'react-https-redirect';
 
 class App extends Component {
   constructor(props) {
@@ -100,17 +101,19 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <Header
-          me={this.state.me}
-          clearAppState={this.clearAppState}
-          isSignedIn={this.state.isSignedIn}
-        />
-        <Grid>
-          {content}
-        </Grid>
-        <Footer />
-      </div>
+      <HttpsRedirect>
+        <div>
+          <Header
+            me={this.state.me}
+            clearAppState={this.clearAppState}
+            isSignedIn={this.state.isSignedIn}
+          />
+          <Grid>
+            {content}
+          </Grid>
+          <Footer />
+        </div>
+      </HttpsRedirect>
     );
   }
 }
