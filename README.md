@@ -27,6 +27,8 @@ The project is in alpha.
 
 Deployed to Heroku using [Heroku Buildpack for create-react-app](https://github.com/mars/create-react-app-buildpack).
 
+Just type `git push heroku master` and everything will work.
+
 ## Limitations
 
 - Currently only the first 30 repositories are shown. Need to add a pagination.
