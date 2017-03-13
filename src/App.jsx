@@ -10,8 +10,6 @@ import { Grid } from 'react-bootstrap';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.clearAppState = this.clearAppState.bind(this)
-
     const token = window.localStorage.getItem('token');
 
     this.state = {
@@ -69,7 +67,6 @@ class App extends Component {
   }
 
   clearAppState() {
-    console.log('clearing');
     history.pushState({}, null, '/');
     window.localStorage.clear();
     this.setState({
