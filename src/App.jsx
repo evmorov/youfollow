@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.clearAppState = this.clearAppState.bind(this)
 
-    const token = localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
 
     this.state = {
       octo: null,
@@ -39,7 +39,7 @@ class App extends Component {
       .then((json) => {
         const token = json.token;
         if (token) {
-          localStorage.setItem('token', token);
+          window.localStorage.setItem('token', token);
           this.getData(token);
         } else {
           console.log(`There is no token in the json response. Error: '${json.error}'`);
@@ -69,8 +69,9 @@ class App extends Component {
   }
 
   clearAppState() {
+    console.log('clearing');
     history.pushState({}, null, '/');
-    localStorage.clear();
+    window.localStorage.clear();
     this.setState({
       octo: null,
       followings: [],
