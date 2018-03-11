@@ -8,6 +8,10 @@ import Following from './components/Following.jsx';
 import BodyNotLoggedIn from './components/BodyNotLoggedIn.jsx';
 import Footer from './components/Footer.jsx';
 
+function getCode() {
+  return window.location.href.match(/\?code=(.*)/);
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,18 +23,14 @@ class App extends Component {
       selectedFollowing: null,
       activeIndex: 0,
       me: null,
-      isSignedIn: (token || this.getCode()),
+      isSignedIn: (token || getCode()),
     };
 
     token ? (this.getData(token)) : (this.getTokenAndData());
   }
 
-  getCode() {
-    return window.location.href.match(/\?code=(.*)/);
-  }
-
   getTokenAndData() {
-    const code = this.getCode();
+    const code = getCode();
     if (!code) return;
 
     fetch(`${process.env.REACT_APP_OAUTH_SERVER}/authenticate/${code[1]}`)
@@ -41,10 +41,10 @@ class App extends Component {
           window.localStorage.setItem('token', token);
           this.getData(token);
         } else {
-          console.log(`There is no token in the json response. Error: '${json.error}'`);
+          console.error(`There is no token in the json response. Error: '${json.error}'`);
         }
       })
-      .catch(ex => console.log(`Failed to change the code ${code[1]}. Exception '${ex}'`));
+      .catch(ex => console.error(`Failed to change the code ${code[1]}. Exception '${ex}'`));
   }
 
   getData(token) {
@@ -52,7 +52,7 @@ class App extends Component {
 
     octo.user.following.fetch((err, users) => {
       if (err && err.message.includes('Bad credentials')) {
-        console.log(err.message);
+        console.error(err.message);
         this.clearAppState();
         return;
       }
@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   clearAppState() {
-    history.pushState({}, null, '/');
+    window.history.pushState({}, null, '/');
     window.localStorage.clear();
     this.setState({
       octo: null,
