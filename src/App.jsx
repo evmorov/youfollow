@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Octokat from 'octokat';
+import { Grid } from 'react-bootstrap';
+import HttpsRedirect from 'react-https-redirect';
 import Header from './components/Header.jsx';
 import FollowingList from './components/FollowingList.jsx';
 import Following from './components/Following.jsx';
 import BodyNotLoggedIn from './components/BodyNotLoggedIn.jsx';
 import Footer from './components/Footer.jsx';
-import { Grid } from 'react-bootstrap';
-import HttpsRedirect from 'react-https-redirect';
 
 class App extends Component {
   constructor(props) {

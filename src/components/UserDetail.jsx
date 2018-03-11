@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 
 class UserDetail extends Component {
+  orHyphen(value) {
+    return value || '-';
+  }
+
   render() {
     const user = this.props.user;
     if (!user) return <div>Loading...</div>;
@@ -35,10 +39,6 @@ class UserDetail extends Component {
         </dl>
       </div>
     );
-  }
-
-  orHyphen(value) {
-    return value ? value : '-';
   }
 }
 
