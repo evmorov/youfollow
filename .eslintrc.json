@@ -10,6 +10,8 @@
   ],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "react/prop-types": 0,
+    "jsx-a11y/img-has-alt": 0
   }
 }
