@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 
 class UserDetail extends Component {
-  orHyphen(value) {
-    return value || '-';
-  }
-
   render() {
+    const orHyphen = value => value || '-';
+
     const user = this.props.user;
     if (!user) return <div>Loading...</div>;
 
@@ -23,19 +21,19 @@ class UserDetail extends Component {
           <dd>{Moment(user.createdAt).fromNow()}</dd>
 
           <dt>Location</dt>
-          <dd>{this.orHyphen(user.location)}</dd>
+          <dd>{orHyphen(user.location)}</dd>
 
           <dt>E-mail</dt>
-          <dd><a href={`mailto:${user.email}`}>{this.orHyphen(user.email)}</a></dd>
+          <dd><a href={`mailto:${user.email}`}>{orHyphen(user.email)}</a></dd>
 
           <dt>Biography</dt>
-          <dd>{this.orHyphen(user.bio)}</dd>
+          <dd>{orHyphen(user.bio)}</dd>
 
           <dt>Web-site</dt>
-          <dd><a href={user.blog}>{this.orHyphen(user.blog)}</a></dd>
+          <dd><a href={user.blog}>{orHyphen(user.blog)}</a></dd>
 
           <dt>Company</dt>
-          <dd>{this.orHyphen(user.company)}</dd>
+          <dd>{orHyphen(user.company)}</dd>
         </dl>
       </div>
     );
