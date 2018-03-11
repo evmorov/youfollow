@@ -5,12 +5,12 @@ import RepoListItem from './RepoListItem.jsx';
 const RepoList = ({ repos }) => {
   if (!repos) return <div>Loading...</div>;
 
-  const repoListItems = repos.items.map((repo) =>
+  const repoListItems = repos.items.map(repo => (
     <RepoListItem
       key={repo.id}
       repo={repo}
     />
-  );
+  ));
 
   return (
     <div>
