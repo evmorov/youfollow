@@ -5,7 +5,7 @@ import FollowingListItem from './FollowingListItem.jsx';
 const FollowingList = ({ followings, onFollowingSelect, activeIndex }) => {
   if (!followings) return <div>Loading...</div>;
 
-  const followingListItems = followings.map((following, index) =>
+  const followingListItems = followings.map((following, index) => (
     <FollowingListItem
       onFollowingSelect={onFollowingSelect}
       key={following.id}
@@ -13,7 +13,7 @@ const FollowingList = ({ followings, onFollowingSelect, activeIndex }) => {
       index={index}
       activeIndex={activeIndex}
     />
-  );
+  ));
 
   return (
     <ListGroup id="following-list" className="col-md-2">

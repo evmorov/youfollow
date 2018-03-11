@@ -2,9 +2,9 @@ import React from 'react';
 import Moment from 'moment';
 
 const UserDetail = ({ user }) => {
-  const orHyphen = value => value || '-';
-
   if (!user) return <div>Loading...</div>;
+
+  const orHyphen = value => value || '-';
 
   return (
     <div id="user-detail">

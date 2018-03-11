@@ -20,10 +20,10 @@ class Following extends Component {
   }
 
   setStateIfFollowingChanged(props) {
-    const following = props.following;
+    const { following } = props;
     if (!following) return null;
 
-    const octo = props.octo;
+    const { octo } = props;
     if (!this.state.following || (following.id !== this.state.following.id)) {
       this.setState({
         following,
@@ -33,6 +33,8 @@ class Following extends Component {
       this.getUser(following, octo);
       this.getRepos(following, octo);
     }
+
+    return true;
   }
 
   getUser(following, octo) {
@@ -54,7 +56,6 @@ class Following extends Component {
       </div>
     );
   }
-
 }
 
 export default Following;

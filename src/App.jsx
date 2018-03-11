@@ -36,7 +36,7 @@ class App extends Component {
     fetch(`${process.env.REACT_APP_OAUTH_SERVER}/authenticate/${code[1]}`)
       .then(response => response.json())
       .then((json) => {
-        const token = json.token;
+        const { token } = json;
         if (token) {
           window.localStorage.setItem('token', token);
           this.getData(token);
@@ -83,8 +83,8 @@ class App extends Component {
   render() {
     let content = null;
     if (this.state.isSignedIn) {
-      content =
-        (<div>
+      content = (
+        <div>
           <FollowingList
             followings={this.state.followings}
             onFollowingSelect={(selectedFollowing, activeIndex) => {
@@ -96,7 +96,8 @@ class App extends Component {
             octo={this.state.octo}
             following={this.state.selectedFollowing}
           />
-        </div>);
+        </div>
+      );
     } else {
       content = <BodyNotLoggedIn />;
     }
