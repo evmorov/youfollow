@@ -1,43 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Moment from 'moment';
 
-class UserDetail extends Component {
-  render() {
-    const orHyphen = value => value || '-';
+const UserDetail = ({ user }) => {
+  const orHyphen = value => value || '-';
 
-    const user = this.props.user;
-    if (!user) return <div>Loading...</div>;
+  if (!user) return <div>Loading...</div>;
 
-    return (
-      <div id="user-detail">
-        <h2>{user.login}</h2>
+  return (
+    <div id="user-detail">
+      <h2>{user.login}</h2>
 
-        { user.name ? <p className="text-muted lead">{user.name}</p> : '' }
-        <img className="img-responsive" src={user.avatarUrl} alt={user.login} />
-        <a href={user.htmlUrl}>GitHub link</a>
+      { user.name ? <p className="text-muted lead">{user.name}</p> : '' }
+      <img className="img-responsive" src={user.avatarUrl} alt={user.login} />
+      <a href={user.htmlUrl}>GitHub link</a>
 
-        <dl className="dl-horizontal">
-          <dt>Registred</dt>
-          <dd>{Moment(user.createdAt).fromNow()}</dd>
+      <dl className="dl-horizontal">
+        <dt>Registred</dt>
+        <dd>{Moment(user.createdAt).fromNow()}</dd>
 
-          <dt>Location</dt>
-          <dd>{orHyphen(user.location)}</dd>
+        <dt>Location</dt>
+        <dd>{orHyphen(user.location)}</dd>
 
-          <dt>E-mail</dt>
-          <dd><a href={`mailto:${user.email}`}>{orHyphen(user.email)}</a></dd>
+        <dt>E-mail</dt>
+        <dd><a href={`mailto:${user.email}`}>{orHyphen(user.email)}</a></dd>
 
-          <dt>Biography</dt>
-          <dd>{orHyphen(user.bio)}</dd>
+        <dt>Biography</dt>
+        <dd>{orHyphen(user.bio)}</dd>
 
-          <dt>Web-site</dt>
-          <dd><a href={user.blog}>{orHyphen(user.blog)}</a></dd>
+        <dt>Web-site</dt>
+        <dd><a href={user.blog}>{orHyphen(user.blog)}</a></dd>
 
-          <dt>Company</dt>
-          <dd>{orHyphen(user.company)}</dd>
-        </dl>
-      </div>
-    );
-  }
-}
+        <dt>Company</dt>
+        <dd>{orHyphen(user.company)}</dd>
+      </dl>
+    </div>
+  );
+};
 
 export default UserDetail;
