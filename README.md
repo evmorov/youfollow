@@ -39,5 +39,13 @@ Just type `git push heroku master` and everything will work.
 2. Register a [GitHub application](https://github.com/settings/developers)
 3. Deploy [a server](https://github.com/prose/gatekeeper) for getting a token from GitHub
 4. Create `.env` file
-5. `npm install`
-6. `npm start`
+5. `yarn install`
+6. `yarn start`
+
+## Development
+
+To lint all js and jsx files:
+
+```
+yarn run lint
+```
