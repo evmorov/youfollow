@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import RepoListItem from './RepoListItem';
+import RepoListItem from './RepoListItem.jsx';
 
-const RepoList = ({repos}) => {
+const RepoList = ({ repos }) => {
   if (!repos) return <div>Loading...</div>;
 
   const repoListItems = repos.items.map((repo) => {

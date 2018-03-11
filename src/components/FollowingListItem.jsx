@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 
-const FollowingListItem = ({onFollowingSelect, following, index, activeIndex}) => {
+const FollowingListItem = ({ onFollowingSelect, following, index, activeIndex }) => {
   const className = index === activeIndex ? 'active' : '';
 
   return (

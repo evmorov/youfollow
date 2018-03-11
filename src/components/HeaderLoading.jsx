@@ -7,6 +7,6 @@ const HeaderLoading = () => {
       <NavItem>Loading...</NavItem>
     </Nav>
   );
-}
+};
 
 export default HeaderLoading;

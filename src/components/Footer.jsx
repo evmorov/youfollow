@@ -13,7 +13,7 @@ const Footer = () => {
         </Col>
       </Row>
     </Grid>
-  )
-}
+  );
+};
 
 export default Footer;

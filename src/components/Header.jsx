@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Navbar } from 'react-bootstrap';
-import HeaderUser from './HeaderUser';
-import HeaderLoading from './HeaderLoading';
-import HeaderGuest from './HeaderGuest';
+import HeaderUser from './HeaderUser.jsx';
+import HeaderLoading from './HeaderLoading.jsx';
+import HeaderGuest from './HeaderGuest.jsx';
 
 const Header = ({ me, clearAppState, isSignedIn }) => {
   let authLinks = null;
@@ -25,6 +25,6 @@ const Header = ({ me, clearAppState, isSignedIn }) => {
       </Grid>
     </Navbar>
   );
-}
+};
 
 export default Header;

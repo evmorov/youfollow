@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import FollowingListItem from './FollowingListItem';
+import FollowingListItem from './FollowingListItem.jsx';
 
-const FollowingList = ({followings, onFollowingSelect, activeIndex}) => {
+const FollowingList = ({ followings, onFollowingSelect, activeIndex }) => {
   if (!followings) return <div>Loading...</div>;
 
   const followingListItems = followings.map((following, index) => {
@@ -12,7 +12,8 @@ const FollowingList = ({followings, onFollowingSelect, activeIndex}) => {
         key={following.id}
         following={following}
         index={index}
-        activeIndex={activeIndex}/>
+        activeIndex={activeIndex}
+      />
     );
   });
 

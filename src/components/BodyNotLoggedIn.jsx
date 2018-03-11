@@ -8,4 +8,4 @@ const BodyNotLoggedIn = () => {
   );
 };
 
-export default BodyNotLoggedIn
+export default BodyNotLoggedIn;

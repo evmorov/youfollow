@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Octokat from 'octokat';
-import Header from './components/Header';
-import FollowingList from './components/FollowingList';
-import Following from './components/Following';
-import BodyNotLoggedIn from './components/BodyNotLoggedIn';
-import Footer from './components/Footer';
+import Header from './components/Header.jsx';
+import FollowingList from './components/FollowingList.jsx';
+import Following from './components/Following.jsx';
+import BodyNotLoggedIn from './components/BodyNotLoggedIn.jsx';
+import Footer from './components/Footer.jsx';
 import { Grid } from 'react-bootstrap';
 import HttpsRedirect from 'react-https-redirect';
 
@@ -19,7 +19,7 @@ class App extends Component {
       selectedFollowing: null,
       activeIndex: 0,
       me: null,
-      isSignedIn: (token || this.getCode())
+      isSignedIn: (token || this.getCode()),
     };
 
     token ? (this.getData(token)) : (this.getTokenAndData());
@@ -58,9 +58,9 @@ class App extends Component {
       }
 
       this.setState({
-        octo: octo,
+        octo,
         followings: users.items,
-        selectedFollowing: users.items[0]
+        selectedFollowing: users.items[0],
       });
     });
 
@@ -76,7 +76,7 @@ class App extends Component {
       selectedFollowing: null,
       activeIndex: 0,
       me: null,
-      isSignedIn: false
+      isSignedIn: false,
     });
   }
 
@@ -84,20 +84,21 @@ class App extends Component {
     let content = null;
     if (this.state.isSignedIn) {
       content =
-        <div>
+        (<div>
           <FollowingList
             followings={this.state.followings}
             onFollowingSelect={(selectedFollowing, activeIndex) => {
-              this.setState({selectedFollowing, activeIndex})
+              this.setState({ selectedFollowing, activeIndex });
             }}
             activeIndex={this.state.activeIndex}
           />
           <Following
             octo={this.state.octo}
-            following={this.state.selectedFollowing} />
-        </div>;
+            following={this.state.selectedFollowing}
+          />
+        </div>);
     } else {
-      content = <BodyNotLoggedIn />
+      content = <BodyNotLoggedIn />;
     }
 
     return (
