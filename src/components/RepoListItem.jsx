@@ -12,7 +12,7 @@ const RepoListItem = ({ repo }) => (
       <span>Watchers: {repo.watchersCount} | </span>
       <span>Updated: {Moment(repo.pushedAt).fromNow()}</span>
     </div>
-    <div><a href={repo.htmlUrl}>GitHub link</a></div>
+    <div><a href={repo.htmlUrl} target="_blank">GitHub link</a></div>
   </ListGroupItem>
 );
 

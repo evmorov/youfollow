@@ -12,7 +12,7 @@ const UserDetail = ({ user }) => {
 
       { user.name ? <p className="text-muted lead">{user.name}</p> : '' }
       <img className="img-responsive" src={user.avatarUrl} alt={user.login} />
-      <a href={user.htmlUrl}>GitHub link</a>
+      <a href={user.htmlUrl} target="_blank">GitHub link</a>
 
       <dl className="dl-horizontal">
         <dt>Registred</dt>
