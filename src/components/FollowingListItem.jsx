@@ -7,7 +7,8 @@ const FollowingListItem = ({
   index,
   activeIndex,
 }) => {
-  const className = index === activeIndex ? 'active' : '';
+  const active = index === activeIndex ? 'active' : '';
+  const className = `${active} clickable`;
 
   return (
     <ListGroupItem
