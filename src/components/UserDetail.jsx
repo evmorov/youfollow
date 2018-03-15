@@ -10,9 +10,15 @@ const UserDetail = ({ user }) => {
     <div id="user-detail">
       <h2>{user.login}</h2>
 
-      { user.name ? <p className="text-muted lead">{user.name}</p> : '' }
-      <img className="img-responsive" src={user.avatarUrl} alt={user.login} />
-      <a href={user.htmlUrl} target="_blank">GitHub link</a>
+      <div className="mb-15">
+        { user.name ? <span className="text-muted lead">{user.name}</span> : '' }
+
+        <a href={user.htmlUrl} target="_blank" className="ml-10">
+          <i className="fa fa-github font-1-5x"></i>
+        </a>
+      </div>
+
+      <img className="img-responsive mb-15" src={user.avatarUrl} alt={user.login} />
 
       <dl className="dl-horizontal">
         <dt>Registred</dt>
